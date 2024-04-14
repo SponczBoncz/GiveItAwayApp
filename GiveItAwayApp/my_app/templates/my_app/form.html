@@ -3,16 +3,6 @@
 {% block header_class %}
     <header class="header--form-page">
 {% endblock %}
-        {% block header_logged_in %}
-          <li class="logged-user">
-            Witaj Agata
-            <ul class="dropdown">
-              <li><a href="#">Profil</a></li>
-              <li><a href="#">Ustawienia</a></li>
-              <li><a href="#">Wyloguj</a></li>
-            </ul>
-          </li>
-        {% endblock %}
       {% block header_90 %}
       <div class="slogan container container--90">
         <div class="slogan--item">
@@ -42,7 +32,7 @@
       </div>
       {% endblock %}
 {% block content %}
-    <section class="form--steps">
+    <section class="form--steps" id="form">
       <div class="form--steps-instructions">
         <div class="form--steps-container">
           <h3>Ważne!</h3>

@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', my_app_view.LandingPageView.as_view(), name='landing'),
     path('login/', my_app_view.LoginView.as_view(), name='login'),
+    path('logout/', my_app_view.LogoutView.as_view(), name='logout'),
     path('register/', my_app_view.RegisterView.as_view(), name='register'),
     path('form/', my_app_view.AddDonationView.as_view(), name='form'),
     path('test/', my_app_view.TestView.as_view(), name='test'),
