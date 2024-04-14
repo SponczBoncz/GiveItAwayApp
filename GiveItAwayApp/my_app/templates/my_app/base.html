@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl">
+{% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{% block title %}Document{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        {% block extra_css %}{% endblock %}
+    </head>
+    <body>
+    {% block header_class %}
+        <header>
+    {% endblock %}
+            <nav class="container container--70">
+                <ul class="nav--actions">
+                {% block header_logged_in %}
+                  <li><a href="" class="btn btn--small btn--without-border">Zaloguj</a></li>
+                  <li><a href="#" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+                {% endblock %}
+                </ul>
+
+                <ul>
+                  <li><a href="" class="btn btn--without-border active">Start</a></li>
+                  <li><a href="#steps" class="btn btn--without-border">O co chodzi?</a></li>
+                  <li><a href="#about-us" class="btn btn--without-border">O nas</a></li>
+                  <li><a href="#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
+                  <li><a href="form.html" class="btn btn--without-border">Przekaż dary</a></li>
+                  <li><a href="#contact" class="btn btn--without-border">Kontakt</a></li>
+                </ul>
+            </nav>
+    {% block header_90 %}
+    {% endblock %}
+        </header>
+
+    {% block content %}
+    {% endblock %}
+
+        <footer>
+            <div class="contact">
+                <h2>Skontaktuj się z nami</h2>
+                <h3>Formularz kontaktowy</h3>
+                {% include 'my_app/contact_form.html' %}
+            </div>
+            <div class="bottom-line">
+                <span class="bottom-line--copy">Copyright &copy; 2024</span>
+                <div class="bottom-line--icons">
+                    <a href="#" class="btn btn--small"><img src="{% static 'images/icon-facebook.svg' %}" /></a>
+                    <a href="#" class="btn btn--small"><img src="{% static 'images/icon-instagram.svg' %}" /></a>
+                </div>
+            </div>
+        </footer>
+
+        <script src="{% static 'js/app.js' %}"></script>
+    {% block extra_scripts %}{% endblock %}
+    </body>
+</html>

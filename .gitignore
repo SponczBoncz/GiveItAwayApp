@@ -376,5 +376,12 @@ poetry.toml
 # LSP config files
 pyrightconfig.json
 
+# from package
+.idea
+.vscode
+node_modules
+package-lock.json
+project
+
 # End of https://www.toptal.com/developers/gitignore/api/pycharm,python,django
 

@@ -17,6 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from my_app import views as my_app_view
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', my_app_view.LandingPageView.as_view(), name='landing'),
+    path('login/', my_app_view.LoginView.as_view(), name='login'),
+    path('register/', my_app_view.RegisterView.as_view(), name='register'),
+    path('form/', my_app_view.AddDonationView.as_view(), name='form'),
+    path('test/', my_app_view.TestView.as_view(), name='test'),
 ]
