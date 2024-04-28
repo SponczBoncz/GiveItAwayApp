@@ -26,5 +26,8 @@ urlpatterns = [
     path('logout/', my_app_view.LogoutView.as_view(), name='logout'),
     path('register/', my_app_view.RegisterView.as_view(), name='register'),
     path('form/', my_app_view.AddDonationView.as_view(), name='form'),
-    path('test/', my_app_view.TestView.as_view(), name='test'),
+    path('form_confirmation/', my_app_view.FormConfirmationView.as_view(), name='form_confirmation'),
+    path('profile/', my_app_view.ProfileView.as_view(), name='profile'),
+    path('profile_edition/', my_app_view.ProfileUpdateView.as_view(), name='profile_edition'),
+    path('profile_password_edition/', my_app_view.ProfilePasswordUpdateView.as_view(), name='profile_password_edition'),
 ]

@@ -132,7 +132,7 @@
                     {% if page == all_foundations_page_obj.number %}
                         <u><span class="active">{{ page }}</span></u>
                     {% else %}
-                        <a href="?all_foundations_page={{ page }}#help">{{ page }}</a>
+                        <a href="?active=1&all_non_governmental_foundations_page={{ all_non_governmental_foundations_page_obj.number }}&all_foundations_page={{ page }}&all_local_crowdfunding_page={{ all_local_crowdfunding_page_obj.number }}&#help">{{ page }}</a>
                     {% endif %}
                     {% if forloop.counter == all_foundations_page_obj.paginator.num_pages %}
                         |
@@ -193,7 +193,7 @@
                     {% if page == all_non_governmental_foundations_page_obj.number %}
                         <u><span class="active">{{ page }}</span></u>
                     {% else %}
-                        <a href="?all_non_governmental_foundations_page={{ page }}">{{ page }}</a>
+                        <a href="?active=2&all_non_governmental_foundations_page={{ page }}&all_foundations_page={{ all_foundations_page_obj.number }}&all_local_crowdfunding_page={{ all_local_crowdfunding_page_obj.number }}&#help">{{ page }}</a>
                     {% endif %}
                     {% if forloop.counter == all_non_governmental_foundations_page_obj.paginator.num_pages %}
                         |
@@ -207,7 +207,7 @@
       </div>
 
       <!-- SLIDE 3 -->
-      {% if active == 2 %}
+      {% if active == 3 %}
       <div class="help--slides active" data-id="3">
       {% else %}
       <div class="help--slides" data-id="3">
@@ -247,7 +247,7 @@
                     {% if page == all_local_crowdfunding_page_obj.number %}
                         <u><span class="active">{{ page }}</span></u>
                     {% else %}
-                        <a href="?all_local_crowdfunding_page={{ page }}&active=3#help">{{ page }}</a>
+                        <a href="?active=3&all_non_governmental_foundations_page={{ all_non_governmental_foundations_page_obj.number }}&all_foundations_page={{ all_foundations_page_obj.number }}&all_local_crowdfunding_page={{ page }}&#help">{{ page }}</a>
                     {% endif %}
                     {% if forloop.counter == all_local_crowdfunding_page_obj.paginator.num_pages %}
                         |

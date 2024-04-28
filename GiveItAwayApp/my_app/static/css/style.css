@@ -566,17 +566,15 @@ form .form-group--buttons {
           justify-content: space-between;
 }
 
-/* line 39, scss/modules/_forms.scss */
-form .form-group--inline label {
-  font-size: 1.8rem;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
-  font-style: normal;
-}
-
 /* line 43, scss/modules/_forms.scss */
 form .form-group--inline label input {
   margin-left: 15px;
+}
+
+/* line 39, scss/modules/_forms.scss */
+form .form-group--inline h2 {
+  margin-bottom: 0px;
+  margin-top: 0px
 }
 
 /* line 49, scss/modules/_forms.scss */
@@ -859,6 +857,23 @@ header.header--main-page {
 @media (min-width: 990px) and (max-width: 1230px) {
   /* line 2, scss/modules/_header.scss */
   header.header--main-page {
+    background-position: bottom left -55vh;
+    background-size: 90vw;
+  }
+}
+
+/* line 2, scss/modules/_header.scss */
+header.header--profile-page {
+  background-image: url(../images/profile.jpg);
+  background-position: bottom left 0vh;
+  background-repeat: no-repeat;
+  background-size: 50vw;
+  height: 90vh;
+}
+
+@media (min-width: 990px) and (max-width: 1230px) {
+  /* line 2, scss/modules/_header.scss */
+  header.header--profile-page {
     background-position: bottom left -55vh;
     background-size: 90vw;
   }
@@ -1356,6 +1371,28 @@ header nav ul li:last-of-type {
 .about-us--image img {
   width: 100%;
   height: auto;
+}
+
+/* line 11, scss/modules/homepage-sections/_about-us.scss */
+.profile--text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+/* line 16, scss/modules/homepage-sections/_about-us.scss */
+.profile--text p {
+  width: 90%;
+  font-size: 1.6rem;
+  line-height: 2em;
 }
 
 /* line 1, scss/modules/homepage-sections/_help.scss */
