@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.core.validators import MinValueValidator
+from django.utils import timezone
 
 TYPE_CHOICES = [
     (0, 'fundacja'),
@@ -58,3 +59,5 @@ class Donation(models.Model):
     pick_up_comment = models.TextField()
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None)
     is_taken = models.BooleanField(default=False)
+    is_taken_changed_date = models.DateTimeField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)

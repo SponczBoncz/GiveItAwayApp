@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.views.generic import RedirectView
 from django.views import View
+from django.utils import timezone
 
 from my_app.models import Donation, Institution, Category
 
@@ -24,18 +25,18 @@ class LandingPageView(View):
         all_institutions = Institution.objects.all().order_by('name')
         all_foundations = all_institutions.filter(type=0)
         all_foundations_pages = len(all_foundations)
-        all_foundations_paginator = Paginator(all_foundations, 2)  # Show 5 per page.
-        all_foundations_page_number = request.GET.get("all_foundations_page")
+        all_foundations_paginator = Paginator(all_foundations, 1)  # Show 5 per page.
+        all_foundations_page_number = request.GET.get("all_foundations_page", 1)
         all_foundations_page_obj = all_foundations_paginator.get_page(all_foundations_page_number)
         all_non_governmental_foundations = all_institutions.filter(type=1)
         all_non_governmental_foundations_pages = len(all_non_governmental_foundations)
         all_non_governmental_foundations_paginator = Paginator(all_non_governmental_foundations, 1)  # Show 5 per page.
-        all_non_governmental_foundations_page_number = request.GET.get("all_non_governmental_foundations_page")
+        all_non_governmental_foundations_page_number = request.GET.get("all_non_governmental_foundations_page", 1)
         all_non_governmental_foundations_page_obj = all_non_governmental_foundations_paginator.get_page(all_non_governmental_foundations_page_number)
         all_local_crowdfunding = all_institutions.filter(type=2)
         all_local_crowdfunding_pages = len(all_local_crowdfunding)
         all_local_crowdfunding_paginator = Paginator(all_local_crowdfunding, 1)  # Show 5 per page.
-        all_local_crowdfunding_page_number = request.GET.get("all_local_crowdfunding_page")
+        all_local_crowdfunding_page_number = request.GET.get("all_local_crowdfunding_page", 1)
         all_local_crowdfunding_page_obj = all_local_crowdfunding_paginator.get_page(all_local_crowdfunding_page_number)
         context = {
             'total_bags_quantity': total_bags_quantity,
@@ -176,11 +177,11 @@ class ProfileView(View):
     login_url = reverse_lazy('login')
 
     def get(self, request, *args, **kwargs):
-        all_donations = Donation.objects.filter(user=request.user).order_by('is_taken', 'pick_up_date', 'pick_up_time')
-        for donation in all_donations:
-            print(donation.pick_up_date)
-            print(donation.is_taken)
-        return render(request, self.template_name, {'all_donations':all_donations})
+        # all_donations = Donation.objects.filter(user=request.user).order_by('is_taken', 'pick_up_date', 'pick_up_time')
+        all_not_taken_donations = Donation.objects.filter(user=request.user, is_taken=False).order_by('created_at')
+        all_taken_donations = Donation.objects.filter(user=request.user, is_taken=True).order_by('is_taken_changed_date')
+
+        return render(request, self.template_name, {'all_not_taken_donations': all_not_taken_donations, 'all_taken_donations': all_taken_donations})
 
     def post(self, request, *args, **kwargs):
         donation_id = request.POST.get('action')
@@ -192,6 +193,7 @@ class ProfileView(View):
                 donation.save()
             else:
                 donation.is_taken = True
+                donation.is_taken_changed_date = timezone.now()
                 donation.save()
             # all_donations = Donation.objects.filter(user=request.user).order_by('pick_up_date').order_by('is_taken')
             url_with_anchor = '/profile#donation-list'

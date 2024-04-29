@@ -122,8 +122,8 @@
             'all_foundations_pages': all_foundations_pages,
         -->
         {% if all_foundations_page_obj.has_previous %}
-            {#<a href="?all_foundations_page=1#help">&laquo; pierwsza</a>#}
-            <a href="?all_foundations_page={{ page_obj.previous_page_number }}#help">&lt; poprzednia </a>
+            <a href="?all_foundations_page=1#help">&laquo;</a>
+            <a href="?all_foundations_page={{ all_foundations_page_obj.previous_page_number }}#help">&lt;</a>
         {% endif %}
 
             <span class="current">
@@ -140,8 +140,8 @@
                 {% endfor %}
             </span>
             {% if all_foundations_page_obj.has_next %}
-                <a href="?all_foundations_page={{ all_foundations_page_obj.next_page_number }}#help"> następna &gt;</a>
-                {#<a href="?all_foundations_page={{ all_foundations_page_obj.paginator.num_pages }}#help">ostatnia &raquo;</a>#}
+                <a href="?all_foundations_page={{ all_foundations_page_obj.next_page_number }}#help">&gt;</a>
+                <a href="?all_foundations_page={{ all_foundations_page_obj.paginator.num_pages }}#help">&raquo;</a>
             {% endif %}
       </div>
 
@@ -183,8 +183,8 @@
         </ul>
         -->
         {% if all_non_governmental_foundations_page_obj.has_previous %}
-            {#<a href="?all_non_governmental_foundations_page=1">&laquo; pierwsza</a>#}
-            <a href="?all_non_governmental_foundations_page={{ page_obj.previous_page_number }}">&lt; poprzednia </a>
+            <a href="?all_non_governmental_foundations_page=1#help">&laquo;</a>
+            <a href="?all_non_governmental_foundations_page={{ all_non_governmental_foundations_page_obj.previous_page_number }}#help">&lt;</a>
         {% endif %}
 
             <span class="current">
@@ -201,8 +201,8 @@
                 {% endfor %}
             </span>
             {% if all_non_governmental_foundations_page_obj.has_next %}
-                <a href="?all_non_governmental_foundations_page={{ all_non_governmental_foundations_page_obj.next_page_number }}"> następna &gt;</a>
-                {#<a href="?all_non_governmental_foundations_page={{ all_non_governmental_foundations_page_obj.paginator.num_pages }}">ostatnia &raquo;</a>#}
+                <a href="?all_non_governmental_foundations_page={{ all_non_governmental_foundations_page_obj.next_page_number }}#help">&gt;</a>
+                <a href="?all_non_governmental_foundations_page={{ all_non_governmental_foundations_page_obj.paginator.num_pages }}#help">&raquo;</a>
             {% endif %}
       </div>
 
@@ -237,8 +237,8 @@
         </ul>
         -->
         {% if all_local_crowdfunding_page_obj.has_previous %}
-            {#<a href="?all_local_crowdfunding_page=1"#help>&laquo; pierwsza</a>#}
-            <a href="?all_local_crowdfunding_page={{ page_obj.previous_page_number }}#help">&lt; poprzednia </a>
+            <a href="?all_local_crowdfunding_page=1#help">&laquo;</a>
+            <a href="?all_local_crowdfunding_page={{ all_local_crowdfunding_page_obj.previous_page_number }}#help">&lt;</a>
         {% endif %}
 
             <span class="current">
@@ -255,8 +255,8 @@
                 {% endfor %}
             </span>
             {% if all_local_crowdfunding_page_obj.has_next %}
-                <a href="?all_local_crowdfunding_page={{ all_local_crowdfunding_page_obj.next_page_number }}#help"> następna &gt;</a>
-                {#<a href="?all_local_crowdfunding_page={{ all_local_crowdfunding_page_obj.paginator.num_pages }}#help">ostatnia &raquo;</a>#}
+                <a href="?all_local_crowdfunding_page={{ all_local_crowdfunding_page_obj.next_page_number }}#help">&gt;</a>
+                <a href="?all_local_crowdfunding_page={{ all_local_crowdfunding_page_obj.paginator.num_pages }}#help">&raquo;</a>
             {% endif %}
       </div>
     </section>

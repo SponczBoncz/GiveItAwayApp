@@ -23,26 +23,25 @@
   <section id="donation-list" class="about-us">
     <div class="profile--text">
         <h2>Lista Twoich darow </h2>
-        {% if all_donations %}
+        {% if all_not_taken_donations or all_taken_donations %}
             <form method="POST">
             {% csrf_token %}
-            {% for donation in all_donations %}
-                {% if donation.is_taken == False %}
-                    <p>Worków: {{ donation.quantity }} ;
-                        Organizacja: {{ donation.institution }} ;
-                        Kategoria: {{ donation.categories.all|join:", " }} ;
-                        Termin: {{ donation.pick_up_date }} {{ donation.pick_up_time }} ;
-                        Status: Nieodebrane </p>
-                    <input type="hidden" name="donation_id" value="{{ donation.id }}">
-                    <button type="submit" name="action" style="margin: auto; display: block" value="{{ donation.id }}">zmień status</button>
-                {% else %}
-                    <p style="color: grey;">Worków: {{ donation.quantity }} ;
-                        Organizacja: {{ donation.institution }} ;
-                        Kategoria: {{ donation.categories.all|join:", " }} ;
-                        Termin: {{ donation.pick_up_date }} {{ donation.pick_up_time }} ;
-                        Status: Odebrane </p><br>
-                    <button type="submit" name="action" style="color: grey; margin: auto; display: block" value="{{ donation.id }}">zmień status</button>
-                {% endif %}
+            {% for donation in all_not_taken_donations %}
+                <p>Worków: {{ donation.quantity }} ;
+                    Organizacja: {{ donation.institution }} ;
+                    Kategoria: {{ donation.categories.all|join:", " }} ;
+                    Termin: {{ donation.pick_up_date }} {{ donation.pick_up_time }} ;
+                    Status: Nieodebrane </p>
+                <input type="hidden" name="donation_id" value="{{ donation.id }}">
+                <button type="submit" name="action" style="margin: auto; display: block" value="{{ donation.id }}">zmień status</button>
+            {% endfor %}
+            {% for donation in all_taken_donations %}
+                <p style="color: grey;">Worków: {{ donation.quantity }} ;
+                    Organizacja: {{ donation.institution }} ;
+                    Kategoria: {{ donation.categories.all|join:", " }} ;
+                    Termin: {{ donation.pick_up_date }} {{ donation.pick_up_time }} ;
+                    Status: Odebrane {{ donation.is_taken_changed_date }}</p><br>
+                <button type="submit" name="action" style="color: grey; margin: auto; display: block" value="{{ donation.id }}">zmień status</button>
             {% endfor %}
             </form>
         {% else %}
